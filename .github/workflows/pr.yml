@@ -1,0 +1,15 @@
+name: Checks for a PR
+
+on:
+  pull_request:
+    branches:
+      - master
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    container:
+      image: erlang:23-slim
+    steps:
+      - run: chmod u+x rebar3
+      - run: ./rebar3 do upgrade, compile, xref, eunit, ct

@@ -624,7 +624,7 @@ get_disk_bucket(Level, Bucket, #state{id=Id, ref=Ref}) ->
     HKey = encode_bucket(Id, Level, Bucket),
     case eleveldb:get(Ref, HKey, []) of
         {ok, Bin} ->
-            binary_to_term(Bin);
+            binary_to_term(Bin, [safe]);
         _ ->
             orddict:new()
     end.

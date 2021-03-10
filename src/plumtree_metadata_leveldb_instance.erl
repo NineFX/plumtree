@@ -154,7 +154,7 @@ init([InstanceId, Opts]) ->
 handle_call({get, Key}, _From, #state{read_opts=ReadOpts, ref=Ref} = State) ->
     case eleveldb:get(Ref, sext:encode(Key), ReadOpts) of
         {ok, Value} ->
-            {reply, {ok, binary_to_term(Value)}, State};
+            {reply, {ok, binary_to_term(Value, [safe])}, State};
         not_found  ->
             {reply, {error, not_found}, State};
         {error, Reason} ->

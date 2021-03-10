@@ -205,7 +205,7 @@ iterate(OkVal, Instances, FullPrefix, KeyMatch, KeysOnly) when element(1, OkVal)
                     {{PrefixedKey, self()}, Instances};
                 true ->
                     BVal = element(3, OkVal),
-                    {{{PrefixedKey, binary_to_term(BVal)}, self()}, Instances};
+                    {{{PrefixedKey, binary_to_term(BVal, [safe])}, self()}, Instances};
                 false ->
                     iterate(Instances, FullPrefix, KeyMatch, KeysOnly)
             end;
