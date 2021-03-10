@@ -238,7 +238,7 @@ repair_other(remote, Peer, PKey, Obj) ->
 
 %% @private
 repair_keys(Peer, PrefixList, {_Type, KeyBin}) ->
-    Key = binary_to_term(KeyBin),
+    Key = binary_to_term(KeyBin, [safe]),
     Prefix = list_to_tuple(PrefixList),
     PKey = {Prefix, Key},
     LocalObj = plumtree_metadata_manager:get(PKey),

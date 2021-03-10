@@ -530,7 +530,7 @@ to_parent_key(NodeName) ->
 
 %% @private
 from_parent_key(NodeKey) ->
-    binary_to_term(NodeKey).
+    binary_to_term(NodeKey, [safe]).
 
 %% @private
 valid_prefixes(NodeName, #hashtree_tree{num_levels=NumLevels}) ->
